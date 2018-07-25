@@ -1,6 +1,6 @@
 {
   "name": "generator-docker4drupal",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "A basic generator for docker4drupal stack that permits easily the generation of a docker4drupal (drupal 7 or 8) project.",
   "homepage": "https://github.com/pauloamgomes/generator-docker4drupal",
   "author": {
