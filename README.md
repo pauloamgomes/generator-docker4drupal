@@ -31,15 +31,14 @@ $ cd drupal 8
 $ yo docker4drupal
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+![Example](https://api.monosnap.com/rpc/file/download?id=IUI6SkXMnwtlQCYtUXThLz8bvOPSFR)
 
 Generated project will contain the following structure:
 
-
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 .
-+-- docker4drupal.sh
++-- <sitename>.sh
 +-- mysql.sh
-+-- drush.sh
 +-- certs
 |   +-- cert.pem
 |   +-- key.pem
@@ -63,30 +62,38 @@ The docroot folder will be populated with vanilla Drupal from docker4drupal when
 containers are initialised, if instead custom was used, its required to manual
 add the Drupal files in docroot/web.
 
-The bash script file docker4drupal.sh can be used for various operations:
+The bash script file <sitename>.sh can be used for various operations:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    USAGE: ./docker4drupal.sh [OPTIONS]
+    USAGE: ./<sitename>.sh [OPTIONS]
 
     OPTIONS
 
-      start       Starts docker-sync and docker-compose containers.
-      stop        Stops docker-sync and docker-compose containers.
+      start       Starts docker containers.
+      stop        Stops docker containers.
+      restart     Stops and starts the containers.
       shell       Opens a bash shell in the docker php container.
-                  Use ./docker4drupal.sh shell root to run as root.
+                  Use ./<%= instance %>.sh shell root to run as root.
       status      Display status of running containers.
       hosts       Add container endpoints to /etc/hosts file (requires sudo).
-                  Use sudo ./docker4drupal.sh hosts
+                  Use sudo ./<%= instance %>.sh hosts
+      sysinstall  Installs <%= instance %>.sh script in /usr/local/bin/<%= instance %>
+                  so it can be used as <%= instance %> <command>
       recreate    Recreates all containers (ALL DATA WILL BE ERASED)
+      composer    Run composer command inside php container
       drush       Run drush command inside php container
-      reinstall   Forces installation of drupal
+      drupal      Run drupal console command inside php container
+      install     Forces installation of drupal
+      enable      Install a module using composer and drush
+      disable     Disable and uninstall a drupal module
+      update      Perform a composer update followed by a drush cim
       db-backup   Creates a database dump
       db-restore  Restores a database dump
       db-cli      Opens the mysql cli
-      help        Display list of useful docker commands.
+      phplogs     Display in foreground php logs from the php container
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-When using vanilla option when running ./docker4drupal.sh start for the first time,
+When using vanilla option when running ./<sitename>.sh start for the first time,
 Drupal will be automatically installed.
  
 
