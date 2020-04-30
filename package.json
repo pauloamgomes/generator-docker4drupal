@@ -30,14 +30,17 @@
     "sleep": "^5.1.1",
     "yeoman-generator": "^3.0.0",
     "yosay": "^2.0.2",
-    "randomatic": "^3.0.0"
+    "randomatic": "^3.0.0",
+    "snyk": "^1.316.1"
   },
   "jest": {
     "testEnvironment": "node"
   },
   "scripts": {
     "pretest": "eslint . --fix",
-    "test": "jest"
+    "test": "jest",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "eslintConfig": {
     "extends": "xo-space",
@@ -47,5 +50,6 @@
     }
   },
   "repository": "pauloamgomes/generator-docker4drupal",
-  "license": "MIT"
+  "license": "MIT",
+  "snyk": true
 }
